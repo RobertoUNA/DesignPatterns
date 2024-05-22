@@ -25,7 +25,7 @@ namespace DesignPatterns.Structural
     // Abstractions 
     public abstract class Message
     {
-        public ISendingMethod sendingMethod;
+        protected ISendingMethod sendingMethod;
         public Message(ISendingMethod sendingMethod)
         {
             this.sendingMethod = sendingMethod;
