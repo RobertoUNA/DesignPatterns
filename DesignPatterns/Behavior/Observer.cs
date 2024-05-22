@@ -19,16 +19,17 @@ namespace DesignPatterns.Behavior
 
     public class Follower : Observer
     {
-        public int Id {  get; set; }
+        public Observable InstaProfile = null;
         public void Update()
         {
-            throw new NotImplementedException();
+            Console.WriteLine((this.InstaProfile as InstagramProfile).LastPost);
         }
     }
 
     public class InstagramProfile : Observable
     {
         List<Observer> followers;
+        public string LastPost= "";
         public void Attatch(Observer follower)
         {
             this.followers.Add(follower);
@@ -47,8 +48,9 @@ namespace DesignPatterns.Behavior
             }
         }
 
-        public void NewPost()
+        public void NewPost(string caption)
         {
+            this.LastPost = caption;
             this.Notify();
             Console.WriteLine("New post has been uploaded");
         }
